@@ -69,12 +69,8 @@ ecommerce-system/
 cd ecommerce-client
 npm install
 ng serve
-Then navigate to: http://localhost:4200/
-
-
-```bash
-
-
+# Then navigate to:
+http://localhost:4200/
 
 ---
 🧪 Features
@@ -125,10 +121,13 @@ Git & GitHub
 
 
 ---
-📬 Contact
+## 📬 Contact
+
 For any questions or feedback, feel free to reach out:
 
-Abo Elhassan M. Essa
-📧 aboelhassan.dev@gmail.com
-🔗 GitHub
+- **👤 Name:** Abo Elhassan M. Essa  
+- **📧 Email:** [mamdohbassem@gmail.com](mailto:mamdohbassem@gmail.com)  
+- **🔗 GitHub:** [AboElhassan-Developer](https://github.com/AboElhassan-Developer)
+
+
 
