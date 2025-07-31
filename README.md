@@ -27,6 +27,18 @@ A full-stack e-commerce web application built using ASP.NET Core for the backend
 ### 👨‍💼 Admin Dashboard
 ![Admin Dashboard](screenshots/adminDashboard.png)
 
+### 👨‍💼 Admin Product
+![Admin Category](screenshots/adminProduct.png)
+
+### 👨‍💼 Admin Category
+![Admin Category](screenshots/adminCategory.png)
+
+### 👨‍💼 Admin Users
+![Admin Users](screenshots/adminUsers.png)
+
+### 👨‍💼 Admin Profile
+![Admin Profile](screenshots/adminProfile.png)
+
 ---
 
 ## 📁 Project Structure
@@ -60,6 +72,11 @@ ng serve
 Then navigate to: http://localhost:4200/
 
 
+```bash
+
+
+
+---
 🧪 Features
 🛍️ Browse products
 
@@ -78,6 +95,7 @@ Then navigate to: http://localhost:4200/
 📦 Order tracking (for customers)
 
 📊 Order management (for admin)
+--- */-*
 
 🛠️ Tech Stack
 Frontend
@@ -106,6 +124,7 @@ Visual Studio
 Git & GitHub
 
 
+---
 📬 Contact
 For any questions or feedback, feel free to reach out:
 
