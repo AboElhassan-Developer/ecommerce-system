@@ -65,7 +65,7 @@ ecommerce-system/
 
 ### 🎨 Frontend (Angular)
 
-```bash
+
 cd ecommerce-client
 npm install
 ng serve
