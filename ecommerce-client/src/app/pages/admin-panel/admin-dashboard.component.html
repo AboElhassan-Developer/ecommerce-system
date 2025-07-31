@@ -1,0 +1,49 @@
+<h2 class="mb-4 text-primary">⚙️ Admin Dashboard</h2>
+
+<nav class="nav nav-pills flex-column flex-sm-row mb-4">
+  <a class="flex-sm-fill text-sm-center nav-link"
+     routerLink="/admin/products"
+     routerLinkActive="active">🛍️ Manage Products</a>
+  <a class="flex-sm-fill text-sm-center nav-link"
+     routerLink="/admin/orders"
+     routerLinkActive="active">📋 Manage Orders</a>
+  <a class="flex-sm-fill text-sm-center nav-link"
+     routerLink="/admin/categories"
+     routerLinkActive="active">🗂️ Manage Categories</a>
+  <a class="flex-sm-fill text-sm-center nav-link"
+     routerLink="/admin/users"
+     routerLinkActive="active">👥 Manage Users</a>
+</nav>
+
+<div class="row mb-4" *ngIf="!loading; else loadingTemplate">
+  <div class="col-md-4 mb-3">
+    <div class="card border-success shadow-sm">
+      <div class="card-body text-center bg-light">
+        <h5 class="card-title">💰 Revenue</h5>
+        <h3 class="text-success">{{ revenue | currency }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-warning shadow-sm">
+      <div class="card-body text-center bg-light">
+        <h5 class="card-title">📦 Orders</h5>
+        <h3 class="text-warning">{{ ordersCount }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <div class="card border-info shadow-sm">
+      <div class="card-body text-center bg-light">
+        <h5 class="card-title">👤 Users</h5>
+        <h3 class="text-info">{{ usersCount }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <p class="text-center text-muted">Loading dashboard data...</p>
+</ng-template>
+
+<p class="text-muted">Select an area from above to manage your store.</p>

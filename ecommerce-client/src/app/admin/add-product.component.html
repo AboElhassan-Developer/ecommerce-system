@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2 class="text-center text-success mb-4">➕ Add New Product</h2>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="product.name" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="product.description" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" name="price" [(ngModel)]="product.price" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Quantity</label>
+      <input type="number" class="form-control" name="quantity" [(ngModel)]="product.quantity" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Category</label>
+      <select class="form-select" name="categoryId" [(ngModel)]="product.categoryId" required>
+        <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Image</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)">
+    </div>
+
+<div class="d-flex justify-content-end mt-4">
+  <button type="submit" class="btn btn-success">💾 Add Product</button>
+  <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+</div>
+  </form>
+</div>
+

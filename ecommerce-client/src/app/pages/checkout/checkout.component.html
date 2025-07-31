@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2>Checkout</h2>
+  <button class="btn btn-success" (click)="checkout()" [disabled]="loading">
+    {{ loading ? 'Processing...' : 'Confirm Order' }}
+  </button>
+
+  <div *ngIf="message" class="alert" [ngClass]="{
+    'alert-success': message.includes('success'),
+    'alert-danger': message.includes('failed')
+  }">
+  {{ message }}
+
+  
+  <div *ngIf="message.includes('success')" class="mt-3">
+    <a routerLink="/orders" class="btn btn-outline-primary">View My Orders</a>
+  </div>
+</div>
+
+</div>

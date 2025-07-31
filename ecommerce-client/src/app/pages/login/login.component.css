@@ -1,0 +1,11 @@
+/* login.component.css */
+.container {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+h3 {
+  text-align: center;
+}

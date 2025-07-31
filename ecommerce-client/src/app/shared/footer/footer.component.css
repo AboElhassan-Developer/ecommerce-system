@@ -1,0 +1,27 @@
+.footer {
+  background-color: #f8f9fa;
+  color: #333;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Dark Mode */
+body.dark-theme .footer {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+  border-top-color: #444;
+}
+
+body.dark-theme .footer-link {
+  color: #9ecbff !important;
+}

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2 class="mb-3">📋 All Orders</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!loading && !orders.length"><p>No orders available.</p></div>
+
+  <div *ngFor="let o of orders" class="card mb-3">
+    <div class="card-header">
+      Order #{{ o.id }} — <strong>{{ OrderStatusLabel[o.status] }}</strong>
+      <span class="float-end">{{ o.createdAt | date:'medium' }}</span>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of o.items">
+        {{ item.productName }} ×{{ item.quantity }} — {{ item.unitPrice | currency }}
+      </li>
+    </ul>
+
+    <div class="card-body">
+      <strong>Total:</strong> {{ o.totalAmount | currency }}
+
+      <div class="float-end">
+        <label class="me-2">Change Status:</label>
+
+       <select
+  (change)="onStatusChange($event, o.id)"
+>
+  <option disabled selected>
+    {{ OrderStatusLabel[o.status] }}
+  </option>
+
+  <option
+    *ngFor="let statusKey of getAvailableStatusOptions(o.status)"
+    [value]="statusKey"
+  >
+    {{ OrderStatusLabel[statusKey] }}
+  </option>
+</select>
+
+
+        <span *ngIf="getAvailableStatusOptions(o.status).length === 0">
+          {{ OrderStatusLabel[o.status] }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

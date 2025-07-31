@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <h2 class="text-center text-primary mb-4">✏️ Edit Product</h2>
+
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="product.name" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="product.description" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" name="price" [(ngModel)]="product.price" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Quantity</label>
+      <input type="number" class="form-control" name="quantity" [(ngModel)]="product.quantity" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Category</label>
+      <select class="form-select" name="categoryId" [(ngModel)]="product.categoryId" required>
+<option [ngValue]="null" disabled>-- Select Category --</option>
+<option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Current Image</label><br>
+      <img [src]="'http://localhost:4372' + product.image" class="img-thumbnail" style="width: 150px;">
+    </div>
+
+    <div class="mb-3">
+  <label>Change Image (optional)</label>
+  <input type="file" class="form-control" (change)="onFileSelected($event)">
+  <small class="text-muted">* Leave empty to keep the current image</small>
+</div>
+
+
+    <button type="submit" class="btn btn-primary">Update Product</button>
+  <div class="d-grid mt-3">
+  <button type="button" class="btn btn-danger" (click)="deleteProduct()">
+    🗑️ Delete Product
+  </button>
+</div>
+  </form>
+</div>
+

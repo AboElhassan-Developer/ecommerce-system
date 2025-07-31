@@ -1,0 +1,65 @@
+<div class="container mb-4">
+  <label for="categorySelect" class="form-label fw-bold">Filter by Category:</label>
+  <select id="categorySelect" class="form-select" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+    <option value="">All Categories</option>
+<option *ngFor="let category of categories" [value]="category">
+  {{ category || 'Uncategorized' }}
+</option>  </select>
+</div>
+
+<div class="container py-5">
+  <h2 class="text-center mb-5 text-success fw-bold">🛍️ Our Products</h2>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-success" role="status"></div>
+    <p class="mt-2">Loading products...</p>
+  </div>
+
+  <div class="row" *ngIf="!loading && products.length">
+    <div class="col-md-6 col-lg-4 mb-4"
+    *ngFor="let product of filteredProducts | paginate:
+    { itemsPerPage: 6, currentPage: page }"
+>
+      <div class="card h-100 shadow-sm border-0">
+     <button
+  class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm"
+  (click)="toggleFavorite(product)"
+  [ngClass]="{'text-danger': product.isFavorite, 'text-muted': !product.isFavorite}">
+  <i class="bi" [ngClass]="product.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+</button>
+
+ <a [routerLink]="['/product', product.id]">
+          <img [src]="product.image ? 'http://localhost:4372' + product.image : 'assets/no-image.png'"
+            alt="{{ product.name }}"
+            class="card-img-top rounded-top"
+            style="height: 200px; object-fit: cover;" />
+        </a>
+
+        <div class="card-body d-flex flex-column">
+          <!-- ✅ رابط اسم المنتج -->
+          <a [routerLink]="['/product', product.id]" class="text-decoration-none">
+            <h5 class="card-title text-primary">{{ product.name }}</h5>
+          </a>
+
+          <p class="card-text text-muted small flex-grow-1">{{ product.description }}</p>
+          <p class="mb-1"><strong>Price:</strong> {{ product.price | currency }}</p>
+          <p class="mb-3"><strong>Category:</strong> {{ product.categoryName }}</p>
+
+          <button (click)="addToCart(product.id)" class="btn btn-success mt-auto">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !filteredProducts.length" class="alert alert-info text-center">
+    <p>No products found.</p>
+  </div>
+</div>
+<pagination-controls
+  (pageChange)="page = $event"
+  [autoHide]="true"
+  previousLabel="«" nextLabel="»"
+  class="d-flex justify-content-center mt-4"
+></pagination-controls>

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2 class="mb-3">🗂️ Manage Categories</h2>
+
+  <div *ngIf="loading" class="text-center my-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <form class="mb-3" (ngSubmit)="save()" #catForm="ngForm">
+    <div class="input-group">
+      <input
+        type="text"
+        [(ngModel)]="formData.name"
+        name="name"
+        required
+        minlength="2"
+        placeholder="Category Name"
+        class="form-control"
+      />
+      <button class="btn btn-primary" type="submit" [disabled]="catForm.invalid">
+        {{ editingId ? 'Update' : 'Add' }}
+      </button>
+      <button *ngIf="editingId" type="button" (click)="reset()" class="btn btn-secondary">
+        Cancel
+      </button>
+    </div>
+  </form>
+
+  <ul class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let c of categories"
+    >
+      {{ c.name }}
+      <div>
+        <button class="btn btn-sm btn-warning me-2" (click)="edit(c)" title="Edit">
+          ✏️
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="delete(c.id)" title="Delete">
+          🗑️
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Your Orders</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!loading && !orders.length"><p>No orders yet.</p></div>
+
+  <div *ngFor="let o of orders" class="card mb-3">
+    <div class="card-header">
+      <span>Order #{{ o.id }} — {{ OrderStatusLabel[o.status] }}</span>
+      <span class="float-end">{{ o.createdAt | date:'medium' }}</span>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of o.items">
+        {{ item.productName }} ×{{ item.quantity }} — {{ item.unitPrice | currency }}
+      </li>
+    </ul>
+    <div class="card-body">
+      <strong>Total:</strong> {{ o.totalAmount | currency }}
+   <button *ngIf="o.status === OrderStatus.Pending || o.status === OrderStatus.Processing"
+        class="btn btn-danger"
+        (click)="cancelOrder(o.id)">
+  Cancel Order
+</button>
+    </div>
+  </div>
+</div>

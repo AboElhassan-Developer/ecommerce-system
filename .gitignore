@@ -1,0 +1,20 @@
+# ====================
+# Angular ignores
+# ====================
+ecommerce-client/node_modules/
+ecommerce-client/dist/
+
+# ====================
+# .NET ignores
+# ====================
+ecommerce-server/ECommerceSystem/bin/
+ecommerce-server/ECommerceSystem/obj/
+ecommerce-server/ECommerceSystem/wwwroot/lib/
+ecommerce-server/ECommerceSystem/*.db
+
+# ====================
+# System/temp files
+# ====================
+*.log
+*.DS_Store
+Thumbs.db

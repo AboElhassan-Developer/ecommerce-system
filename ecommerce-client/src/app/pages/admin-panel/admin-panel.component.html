@@ -1,0 +1,40 @@
+
+<div class="container mt-4">
+  <div class="mb-3 text-end">
+    <button class="btn btn-success" [routerLink]="['/admin/products/add']">
+      ➕ Add Product
+    </button>
+  </div>
+
+<div class="mb-3 row">
+  <div class="col-md-4">
+    <label for="categoryFilter" class="form-label">Filter by Category:</label>
+    <select class="form-select" [(ngModel)]="selectedCategoryId" (change)="filterProducts()">
+      <option [ngValue]="0">All Categories</option>
+      <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+    </select>
+  </div>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.name }}</td>
+      <td>{{ p.price }}</td>
+      <td>{{ p.categoryName }}</td>
+      <td>
+<button class="btn btn-sm btn-warning" (click)="editProduct(p.id)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

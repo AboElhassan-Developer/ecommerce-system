@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2 class="mb-3">👥 Manage Users</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <table class="table table-bordered" *ngIf="!loading && users.length">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.email }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary me-2" (click)="toggleRole(user)">
+            Toggle Role
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !users.length">No users found.</div>
+</div>
+
